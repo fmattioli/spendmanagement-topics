@@ -7,7 +7,7 @@
             /// <summary>
             /// topic for receipt events
             /// </summary>
-            public const string ReceiptEvents = "spents-receipts-events";
+            public const string ReceiptEventTopicName = "spents-receipts-events.v1";
 
             /// <summary>
             /// Spents receipts telemetry topic
@@ -15,12 +15,12 @@
             public const string ReceiptTelemetry = "spents-receipts-telemetry";
         }
 
-        public static class Documents
+        public static class Commands
         {
             /// <summary>
             /// topic for receipt documents
             /// </summary>
-            public const string ReceiptDocuments = "spents-receipts-documents.v1";
+            public const string ReceitCommandTopicName = "spents-receipts-commands.v1";
         }
     }
 }

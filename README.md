@@ -10,5 +10,4 @@ A simple nugget package project to add a kafka topics and use as it will be nece
 > https://github.com/fmattioli/spendmanagement-eventsourcing <br/>
 
 # Related packages
-> https://github.com/fmattioli/spents-domain <br/>
-> https://github.com/fmattioli/Spent-Events <br/>
+> https://github.com/fmattioli/spendmanagement-contracts

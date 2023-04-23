@@ -1,4 +1,5 @@
-# Spents-Topics
+# spendmanagement-topics
+
 A simple nugget package project to add a kafka topics and use as it will be necessary on spents project context.
 
 # Nugget package

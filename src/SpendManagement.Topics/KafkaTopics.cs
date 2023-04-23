@@ -1,4 +1,4 @@
-﻿namespace Spents.Topics
+﻿namespace SpendManagement.Topics
 {
     public static class KafkaTopics
     {
@@ -7,12 +7,12 @@
             /// <summary>
             /// topic for receipt events
             /// </summary>
-            public const string ReceiptEventTopicName = "spents-receipts-events.v1";
+            public const string ReceiptEventTopicName = "spend.management.receipts.events.v1";
 
             /// <summary>
-            /// Spents receipts telemetry topic
+            /// telemetry topic
             /// </summary>
-            public const string ReceiptTelemetry = "spents-receipts-telemetry";
+            public const string ReceiptTelemetry = "spend.management.receipts.telemetry";
         }
 
         public static class Commands
@@ -20,7 +20,7 @@
             /// <summary>
             /// topic for receipt documents
             /// </summary>
-            public const string ReceitCommandTopicName = "spents-receipts-commands.v1";
+            public const string ReceiptCommandTopicName = "spend.management.receipts.commands.v1";
         }
     }
 }

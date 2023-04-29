@@ -12,3 +12,4 @@ A simple nugget package project to add a kafka topics and use as it will be nece
 
 # Related packages
 > https://github.com/fmattioli/spendmanagement-contracts
+> https://github.com/fmattioli/spendmanagement-eventhandler

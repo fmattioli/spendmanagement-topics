@@ -10,9 +10,9 @@
             public const string ReceiptEventTopicName = "spend.management.receipts.events.v1";
 
             /// <summary>
-            /// telemetry topic
+            /// telemetry topic for events
             /// </summary>
-            public const string ReceiptTelemetry = "spend.management.receipts.telemetry";
+            public const string ReceiptTelemetry = "spend.management.receipts.events.telemetry";
         }
 
         public static class Commands
@@ -21,6 +21,11 @@
             /// topic for receipt documents
             /// </summary>
             public const string ReceiptCommandTopicName = "spend.management.receipts.commands.v1";
+
+            /// <summary>
+            /// telemetry topic for commands
+            /// </summary>
+            public const string ReceiptTelemetry = "spend.management.receipts.commands.telemetry";
         }
     }
 }

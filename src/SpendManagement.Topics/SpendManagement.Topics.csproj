@@ -8,7 +8,7 @@
     <Authors>Felipe Mattioli dos Santos</Authors>
     <Description>A project with all kafka topics used on context of the Spents project.</Description>
     <PackageIcon>27566574.jpg</PackageIcon>
-    <Version>1.0.4</Version>
+    <Version>1.0.5</Version>
   </PropertyGroup>
 
   <ItemGroup>

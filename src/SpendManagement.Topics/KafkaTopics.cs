@@ -18,7 +18,7 @@
             /// <summary>
             /// topic for receipt documents
             /// </summary>
-            public static string GetReceiptEvents(string environment)
+            public static string GetReceiptCommands(string environment)
             {
                 return environment + "spend.management.receipts.commands";
             }

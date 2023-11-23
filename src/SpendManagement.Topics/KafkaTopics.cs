@@ -9,7 +9,7 @@
             /// </summary>
             public static string GetReceiptEvents(string environment)
             {
-                return environment + "spend.management.receipts.events";
+                return environment + ".spendmanagement.receipts.events";
             }
         }
 
@@ -20,7 +20,7 @@
             /// </summary>
             public static string GetReceiptCommands(string environment)
             {
-                return environment + "spend.management.receipts.commands";
+                return environment + ".spendmanagement.receipts.commands";
             }
         }
     }

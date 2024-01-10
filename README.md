@@ -11,4 +11,5 @@ A simple nugget package project to add a kafka topics and use as it will be nece
 > https://github.com/fmattioli/spendmanagement-identity <br/>
 
 # Related packages
+> https://github.com/fmattioli/spendmanagement-webcontracts <br/>
 > https://github.com/fmattioli/spendmanagement-contracts <br/>

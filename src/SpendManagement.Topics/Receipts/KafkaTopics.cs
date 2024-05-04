@@ -1,4 +1,4 @@
-﻿namespace SpendManagement.Topics
+﻿namespace SpendManagement.Topics.Receipts
 {
     public static class KafkaTopics
     {

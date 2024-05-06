@@ -1,15 +1,13 @@
 # spendmanagement-topics
+A simple nuGet package project to add Kafka topics and use as it will be necessary in spendmanagement project context.
 
-A simple nugget package project to add a kafka topics and use as it will be necessary on spents project context.
+# Projects
+> [spendmanagement-identity-api](https://github.com/fmattioli/spendmanagement-identity) <br/>
+> [spendmanagement-receipts-api](https://github.com/fmattioli/spendmanagement-receipts-api) <br/>
+> [spendmanagement-receipts-commandhandler-api](https://github.com/fmattioli/spendmanagement-receipts-commandhandler-api)  <br/>
+> [spendmanagement-receipts-queryhandler-api](https://github.com/fmattioli/spendmanagement-receipts-queryhandler-api)  <br/>
+> [spendmanagement-receipts-domain-api](https://github.com/fmattioli/spendmanagement-receipts-domain-api)  <br/>
 
-# Related projects
-> https://github.com/fmattioli/spendmanagement-apigateway <br/>
-> https://github.com/fmattioli/spendmanagement-api <br/>
-> https://github.com/fmattioli/spendmanagement-domain <br/>
-> https://github.com/fmattioli/spendmanagement-readmodel <br/>
-> https://github.com/fmattioli/spendmanagement-eventhandler <br/>
-> https://github.com/fmattioli/spendmanagement-identity <br/>
-
-# Related packages
-> https://github.com/fmattioli/spendmanagement-webcontracts <br/>
-> https://github.com/fmattioli/spendmanagement-contracts <br/>
+#  Packages
+> [spendmanagement-receipts-contracts](https://github.com/fmattioli/spendmanagement-receipts-contracts) <br/>
+> [spendmanagement-receipts-topics](https://github.com/fmattioli/spendmanagement-topics) <br/>

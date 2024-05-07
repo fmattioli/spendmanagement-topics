@@ -10,4 +10,3 @@ A simple nuGet package project to add Kafka topics and use as it will be necessa
 
 #  Packages
 > [spendmanagement-receipts-contracts](https://github.com/fmattioli/spendmanagement-receipts-contracts) <br/>
-> [spendmanagement-receipts-topics](https://github.com/fmattioli/spendmanagement-topics) <br/>

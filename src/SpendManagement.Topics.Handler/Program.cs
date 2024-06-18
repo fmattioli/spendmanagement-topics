@@ -2,7 +2,7 @@
 using Confluent.Kafka;
 using SpendManagement.Topics.Receipts;
 
-var topicsNames = new string[]
+var topicsNames = new List<string>
 {
     KafkaTopics.Commands.GetReceiptCommands("lives"),
     KafkaTopics.Events.GetReceiptEvents("lives"),
@@ -21,18 +21,18 @@ using (var admin = new AdminClientBuilder(config).Build())
 {
     try
     {
-        foreach (var topic in topicsNames)
+        topicsNames.ForEach(async topicName =>
         {
             var topicSpec = new TopicSpecification
             {
-                Name = topic!,
+                Name = topicName!,
                 NumPartitions = 6,
                 ReplicationFactor = 1
             };
 
             await admin.CreateTopicsAsync([topicSpec]);
-            Console.WriteLine($"Tópico criado com sucesso: {topic!}");
-        }
+            Console.WriteLine($"Tópico criado com sucesso: {topicName!}");
+        });
     }
     catch (Exception ex)
     {

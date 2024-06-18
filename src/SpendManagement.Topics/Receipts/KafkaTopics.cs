@@ -16,7 +16,7 @@
         public static class Commands
         {
             /// <summary>
-            /// topic for receipt documents
+            /// topic for receipt commands
             /// </summary>
             public static string GetReceiptCommands(string environment)
             {

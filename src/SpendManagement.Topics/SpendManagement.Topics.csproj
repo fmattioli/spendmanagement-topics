@@ -5,19 +5,18 @@
     <Nullable>enable</Nullable>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <Authors>Felipe Mattioli dos Santos</Authors>
-    <Description>A project with all kafka topics used on context of the Spents project.</Description>
-    <PackageIcon>27566574.jpg</PackageIcon>
+    <Description>A project with all kafka topics used on context of the SpendManagement project.</Description>
+    <PackageIcon>27566574.png</PackageIcon>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <Version>2.1.2</Version>
   </PropertyGroup>
-
   <ItemGroup>
-    <None Update="27566574.jpg">
+    <None Include="LICENSE.txt" Pack="true" PackagePath="" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Update="27566574.png">
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="LICENSE.txt" Pack="true" PackagePath="" />
   </ItemGroup>
 </Project>

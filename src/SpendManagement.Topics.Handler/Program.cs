@@ -1,41 +1,49 @@
 ﻿using Confluent.Kafka.Admin;
 using Confluent.Kafka;
-using SpendManagement.Topics.Receipts;
+using SpendManagement.Topics.Handler.conf;
+using System.Text.Json;
+using SpendManagement.Topics.Handler;
 
-var topicsNames = new List<string>
-{
-    KafkaTopics.Commands.GetReceiptCommands("lives"),
-    KafkaTopics.Events.GetReceiptEvents("lives"),
-};
+string projectDirectory = Path.GetFullPath(Path.Combine(AppContext.BaseDirectory, @"..\..\..\"));
+string filePath = Path.Combine(projectDirectory, "conf", "kakfatopics.json");
 
-var config = new AdminClientConfig
+if (File.Exists(filePath))
 {
-    BootstrapServers = "unique-camel-8345-eu2-kafka.upstash.io:9092",
-    SaslMechanism = SaslMechanism.ScramSha256,
-    SecurityProtocol = SecurityProtocol.SaslSsl,
-    SaslUsername = "dW5pcXVlLWNhbWVsLTgzNDUk8RLsTQoJ7i1X5nGz0HNWvMirQdh7ldh4--2vvmY",
-    SaslPassword = "ZmExNzIwZDgtYTI4ZC00OTFhLWI5YzgtMzMyMzFkYjBiMjEz"
-};
-
-using (var admin = new AdminClientBuilder(config).Build())
-{
-    try
+    var config = new AdminClientConfig
     {
-        topicsNames.ForEach(async topicName =>
+        BootstrapServers = Environment.GetEnvironmentVariable("BOOTSTRAPSERVERS"),
+        SaslMechanism = SaslMechanism.ScramSha256,
+        SecurityProtocol = SecurityProtocol.SaslSsl,
+        SaslUsername = Environment.GetEnvironmentVariable("SASLPASSWORD"),
+        SaslPassword = Environment.GetEnvironmentVariable("SASLUSERNAME")
+    };
+
+    string jsonString = File.ReadAllText(filePath);
+    var topicConfigs = JsonSerializer.Deserialize<KafkaTopicsConfig>(jsonString);
+
+    topicConfigs?.KafkaTopics?
+        .Where(topics => topics.CreatedAt == DateTime.MinValue)
+        .ToList()
+        .ForEach(async topic =>
         {
             var topicSpec = new TopicSpecification
             {
-                Name = topicName!,
-                NumPartitions = 6,
+                Name = IsDevelopmentEnvironment() ? $"dev.{topic.Name!}" : $"live.{topic.Name!}",
+                NumPartitions = topic.NumberOfPartitions,
                 ReplicationFactor = 1
             };
 
+            using var admin = new AdminClientBuilder(config).Build();
             await admin.CreateTopicsAsync([topicSpec]);
-            Console.WriteLine($"Tópico criado com sucesso: {topicName!}");
+            Console.WriteLine($"Topic {topic.Name!} created with successfully!");
+            topic.CreatedAt = DateTime.Now;
         });
-    }
-    catch (Exception ex)
-    {
-        Console.WriteLine($"Erro ao criar o tópico: {ex.Message}");
-    }
+
+    string newJsonString = JsonOperations.Serialize(topicConfigs);
+    File.WriteAllText(filePath, newJsonString);
+}
+
+static bool IsDevelopmentEnvironment()
+{
+    return Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") == "dev" || string.IsNullOrEmpty(Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT"));
 }

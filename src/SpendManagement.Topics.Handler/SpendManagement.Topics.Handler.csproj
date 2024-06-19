@@ -8,6 +8,16 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="conf\kakfatopics.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="conf\kakfatopics.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Confluent.Kafka" Version="2.4.0" />
   </ItemGroup>
 

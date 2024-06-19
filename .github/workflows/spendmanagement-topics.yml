@@ -104,7 +104,7 @@ jobs:
 
   check-create-kafka-topics:
     runs-on: ubuntu-latest
-    name: Check if it is necessary create kafka topics
+    name: Check/Create kafka topics
     needs: [bump]
     env:
         NUGET_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -127,6 +127,7 @@ jobs:
     - name: Creaet Kafka Topics
       run: dotnet run --configuration Release --project src/SpendManagement.Topics.Handler/SpendManagement.Topics.Handler.csproj
       env:
+          ASPNETCORE_ENVIRONMENT: live
           BOOTSTRAPSERVERS: ${{ secrets.BOOTSTRAPSERVERS }}          
           SASLPASSWORD: ${{ secrets.SASLPASSWORD }}          
           SASLUSERNAME: ${{ secrets.SASLUSERNAME }}

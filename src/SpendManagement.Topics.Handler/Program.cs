@@ -6,6 +6,7 @@ using SpendManagement.Topics.Handler;
 
 string projectDirectory = Path.GetFullPath(Path.Combine(AppContext.BaseDirectory, @"..\..\..\"));
 string filePath = Path.Combine(projectDirectory, "conf", "kakfatopics.json");
+Console.WriteLine(filePath);
 
 if (File.Exists(filePath))
 {

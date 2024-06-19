@@ -23,27 +23,24 @@ if (File.Exists(filePath))
     var topicConfigs = JsonSerializer.Deserialize<KafkaTopicsConfig>(jsonString);
 
     Console.WriteLine("entrou 1");
-    topicConfigs?.KafkaTopics?
-        .Where(topics => topics.CreatedAt == DateTime.MinValue)
-        .ToList()
-        .ForEach(async topic =>
+    foreach (var topic in topicConfigs?.KafkaTopics?.Where(topics => topics.CreatedAt == DateTime.MinValue))
+    {
+        Console.WriteLine("entrou 2");
+        var topicSpec = new TopicSpecification
         {
-            Console.WriteLine("entrou 2");
-            var topicSpec = new TopicSpecification
-            {
-                Name = IsDevelopmentEnvironment() ? $"dev.{topic.Name!}" : $"live.{topic.Name!}",
-                NumPartitions = topic.NumberOfPartitions,
-                ReplicationFactor = 1
-            };
+            Name = IsDevelopmentEnvironment() ? $"dev.{topic.Name!}" : $"live.{topic.Name!}",
+            NumPartitions = topic.NumberOfPartitions,
+            ReplicationFactor = 1
+        };
 
-            Console.WriteLine(topicSpec.Name + topicSpec.NumPartitions);
+        Console.WriteLine(topicSpec.Name + topicSpec.NumPartitions);
 
-            using var admin = new AdminClientBuilder(config).Build();
-            Console.WriteLine("entrou de novo aqui");
-            await admin.CreateTopicsAsync([topicSpec]);
-            Console.WriteLine($"Topic {topic.Name!} created with successfully!");
-            topic.CreatedAt = DateTime.Now;
-        });
+        using var admin = new AdminClientBuilder(config).Build();
+        Console.WriteLine("entrou de novo aqui");
+        await admin.CreateTopicsAsync(new[] { topicSpec });
+        Console.WriteLine($"Topic {topic.Name!} created successfully!");
+        topic.CreatedAt = DateTime.Now;
+    }
 
     string newJsonString = JsonOperations.Serialize(topicConfigs);
     File.WriteAllText(filePath, newJsonString);

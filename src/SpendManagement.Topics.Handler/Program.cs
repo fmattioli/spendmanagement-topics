@@ -22,11 +22,13 @@ if (File.Exists(filePath))
     string jsonString = File.ReadAllText(filePath);
     var topicConfigs = JsonSerializer.Deserialize<KafkaTopicsConfig>(jsonString);
 
+    Console.WriteLine("entrou 1");
     topicConfigs?.KafkaTopics?
         .Where(topics => topics.CreatedAt == DateTime.MinValue)
         .ToList()
         .ForEach(async topic =>
         {
+            Console.WriteLine("entrou 2");
             var topicSpec = new TopicSpecification
             {
                 Name = IsDevelopmentEnvironment() ? $"dev.{topic.Name!}" : $"live.{topic.Name!}",

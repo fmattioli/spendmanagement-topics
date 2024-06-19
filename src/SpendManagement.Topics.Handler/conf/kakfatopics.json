@@ -12,7 +12,8 @@
     },
     {
       "Name": "spendmanagement.receipts.events3",
-      "NumberOfPartitions": 6
+      "NumberOfPartitions": 6,
+      "CreatedAt": "2024-06-19T14:55:16.318121+00:00"
     }
   ]
 }

@@ -4,7 +4,7 @@ using SpendManagement.Topics.Handler.conf;
 using System.Text.Json;
 using SpendManagement.Topics.Handler;
 
-string projectDirectory = Directory.GetParent(AppContext.BaseDirectory).Parent.Parent.Parent.FullName;
+string projectDirectory = Directory.GetParent(AppContext.BaseDirectory)!.Parent!.Parent!.Parent!.FullName;
 string filePath = Path.Combine(projectDirectory, "conf", "kakfatopics.json");
 Console.WriteLine(filePath);
 
@@ -22,10 +22,8 @@ if (File.Exists(filePath))
     string jsonString = File.ReadAllText(filePath);
     var topicConfigs = JsonSerializer.Deserialize<KafkaTopicsConfig>(jsonString);
 
-    Console.WriteLine("entrou 1");
-    foreach (var topic in topicConfigs?.KafkaTopics?.Where(topics => topics.CreatedAt == DateTime.MinValue))
+    foreach (var topic in topicConfigs!.KafkaTopics!.Where(topics => topics.CreatedAt == DateTime.MinValue))
     {
-        Console.WriteLine("entrou 2");
         var topicSpec = new TopicSpecification
         {
             Name = IsDevelopmentEnvironment() ? $"dev.{topic.Name!}" : $"live.{topic.Name!}",
@@ -36,9 +34,7 @@ if (File.Exists(filePath))
         Console.WriteLine(topicSpec.Name + topicSpec.NumPartitions);
 
         using var admin = new AdminClientBuilder(config).Build();
-        Console.WriteLine("entrou de novo aqui");
-        await admin.CreateTopicsAsync(new[] { topicSpec });
-        Console.WriteLine($"Topic {topic.Name!} created successfully!");
+        await admin.CreateTopicsAsync([topicSpec]);
         topic.CreatedAt = DateTime.Now;
     }
 

@@ -36,7 +36,10 @@ if (File.Exists(filePath))
                 ReplicationFactor = 1
             };
 
+            Console.WriteLine(topicSpec.Name + topicSpec.NumPartitions);
+
             using var admin = new AdminClientBuilder(config).Build();
+            Console.WriteLine("entrou de novo aqui");
             await admin.CreateTopicsAsync([topicSpec]);
             Console.WriteLine($"Topic {topic.Name!} created with successfully!");
             topic.CreatedAt = DateTime.Now;

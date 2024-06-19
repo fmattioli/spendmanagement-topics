@@ -121,7 +121,11 @@ jobs:
       run: dotnet build --configuration Release src/SpendManagement.Topics.Handler/SpendManagement.Topics.Handler.csproj
 
     - name: Creaet Kafka Topics
-      run: dotnet run --configuration Release src/SpendManagement.Topics.Handler/SpendManagement.Topics.Handler.csproj
+      run: dotnet run --configuration Release --project src/SpendManagement.Topics.Handler/SpendManagement.Topics.Handler.csproj
+      env:
+          BOOTSTRAPSERVERS: ${{ secrets.BOOTSTRAPSERVERS }}          
+          SASLPASSWORD: ${{ secrets.SASLPASSWORD }}          
+          SASLUSERNAME: ${{ secrets.SASLUSERNAME }}
       
   publish-nuGet-package:
     runs-on: ubuntu-latest

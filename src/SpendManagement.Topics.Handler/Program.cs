@@ -15,8 +15,8 @@ if (File.Exists(filePath))
         BootstrapServers = Environment.GetEnvironmentVariable("BOOTSTRAPSERVERS"),
         SaslMechanism = SaslMechanism.ScramSha256,
         SecurityProtocol = SecurityProtocol.SaslSsl,
-        SaslUsername = Environment.GetEnvironmentVariable("SASLPASSWORD"),
-        SaslPassword = Environment.GetEnvironmentVariable("SASLUSERNAME")
+        SaslUsername = Environment.GetEnvironmentVariable("SASLUSERNAME"),
+        SaslPassword = Environment.GetEnvironmentVariable("SASLPASSWORD")
     };
 
     string jsonString = File.ReadAllText(filePath);

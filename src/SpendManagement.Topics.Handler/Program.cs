@@ -4,7 +4,7 @@ using SpendManagement.Topics.Handler.conf;
 using System.Text.Json;
 using SpendManagement.Topics.Handler;
 
-string projectDirectory = Path.GetFullPath(Path.Combine(AppContext.BaseDirectory, @"..\..\..\"));
+string projectDirectory = Directory.GetParent(AppContext.BaseDirectory).Parent.Parent.Parent.FullName;
 string filePath = Path.Combine(projectDirectory, "conf", "kakfatopics.json");
 Console.WriteLine(filePath);
 

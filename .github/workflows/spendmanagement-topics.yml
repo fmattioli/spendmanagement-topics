@@ -101,7 +101,29 @@ jobs:
           else
             echo "VERSION=${{ steps.bump-minor.outputs.newVersion }}" >> $GITHUB_OUTPUT
           fi        
-  
+
+  check-create-kafka-topics:
+    runs-on: ubuntu-latest
+    name: Check/Create kafka topics
+    needs: [bump]
+    env:
+        NUGET_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        VERSION_UPDATE_TYPE: ${{ needs.bump.outputs.version_update_type }}
+    steps:
+    - name: Check out repository
+      uses: actions/checkout@v4
+
+    - name: Setup .NET9
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: '9.0.x'
+
+    - name: Restore dependencies
+      run: dotnet restore src/SpendManagement.Topics.Handler/SpendManagement.Topics.Handler.csproj
+      
+    - name: Build
+      run: dotnet build --configuration Release src/SpendManagement.Topics.Handler/SpendManagement.Topics.Handler.csproj    
+          
   publish-nuGet-package:
     runs-on: ubuntu-latest
     needs: [bump, check-create-kafka-topics]    
@@ -116,7 +138,7 @@ jobs:
         uses: actions/setup-dotnet@v4
         with:
           source-url: https://api.nuget.org/v3/index.json
-          dotnet-version: 8.0.x        
+          dotnet-version: 9.0.x        
 
       - name: Restore dependencies
         run: dotnet restore src/SpendManagement.Topics/SpendManagement.Topics.csproj

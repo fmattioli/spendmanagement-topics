@@ -19,7 +19,7 @@ jobs:
         uses: actions/setup-dotnet@v4
         with:
           source-url: https://api.nuget.org/v3/index.json
-          dotnet-version: 8.0.x
+          dotnet-version: 9.0.x
         env:
           NUGET_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Build
@@ -113,10 +113,10 @@ jobs:
     - name: Check out repository
       uses: actions/checkout@v4
 
-    - name: Setup .NET8
+    - name: Setup .NET9
       uses: actions/setup-dotnet@v4
       with:
-        dotnet-version: '8.0.x'
+        dotnet-version: '9.0.x'
 
     - name: Restore dependencies
       run: dotnet restore src/SpendManagement.Topics.Handler/SpendManagement.Topics.Handler.csproj

@@ -8,7 +8,7 @@
     <Description>A project with all kafka topics used on context of the SpendManagement projects.</Description>
     <PackageIcon>27566574.png</PackageIcon>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <Version>2.2.7</Version>
+    <Version>2.2.8</Version>
   </PropertyGroup>
   <ItemGroup>
     <None Include="LICENSE.txt" Pack="true" PackagePath="" />

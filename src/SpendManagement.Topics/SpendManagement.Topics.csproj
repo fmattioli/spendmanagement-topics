@@ -5,7 +5,7 @@
     <Nullable>enable</Nullable>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <Authors>Felipe Mattioli dos Santos</Authors>
-    <Description>Project with all kafka topics used on context of the SpendManagement projects.</Description>
+    <Description>Project with all kafka topics used on SpendManagement context projects.</Description>
     <PackageIcon>27566574.png</PackageIcon>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <Version>2.2.9</Version>
